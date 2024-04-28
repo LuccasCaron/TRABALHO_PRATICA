@@ -1,7 +1,9 @@
-﻿namespace PROJETO_ADVOCACIA.Models;
+﻿namespace PROJETO_ADVOCACIA.Entities;
 
 public class User
 {
+
+    #region Properties
 
     public Guid Id { get; set; }
 
@@ -11,6 +13,9 @@ public class User
 
     public string Senha { get; set; }
 
+    #endregion
+
+    #region Constructor
 
     public User()
     {
@@ -24,4 +29,7 @@ public class User
         Email = email;
         Senha = senha;
     }
+
+    #endregion
+
 }

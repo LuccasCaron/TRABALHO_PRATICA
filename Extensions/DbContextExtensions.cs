@@ -8,7 +8,7 @@ public static class DbContextExtensions
     #region Properties
 
     private static string _connection = Environment.GetEnvironmentVariable("CONNECTION_STRING");
-
+    
     #endregion
 
     public static void AddCustomDbContext(this IServiceCollection services)

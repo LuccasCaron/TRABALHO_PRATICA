@@ -134,3 +134,4 @@ C:\Users\lucca\OneDrive\Desktop\Pessoal\Projetos\PROJETO_ADVOCACIA\PROJETO_ADVOC
 C:\Users\lucca\OneDrive\Desktop\Pessoal\Projetos\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\Debug\net8.0\PROJETO_ADVOCACIA.pdb
 C:\Users\lucca\OneDrive\Desktop\Pessoal\Projetos\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\Debug\net8.0\PROJETO_ADVOCACIA.genruntimeconfig.cache
 C:\Users\lucca\OneDrive\Desktop\Pessoal\Projetos\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\Debug\net8.0\ref\PROJETO_ADVOCACIA.dll
+C:\Users\lucca\OneDrive\Desktop\Pessoal\Projetos\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\Debug\net8.0\PROJETO_ADVOCACIA.sourcelink.json

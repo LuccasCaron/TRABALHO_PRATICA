@@ -1,6 +1,6 @@
-﻿namespace PROJETO_ADVOCACIA.Models;
+﻿namespace PROJETO_ADVOCACIA.Dtos.Estagiario;
 
-public class Estagiario
+public class NovoEstagiarioDto
 {
 
     #region Properties
@@ -9,7 +9,6 @@ public class Estagiario
     public string Nome { get; set; }
     public string Telefone { get; set; }
     public string CpfAdvogado { get; set; }
-    public Advogado Advogado { get; set; }
 
     #endregion
 

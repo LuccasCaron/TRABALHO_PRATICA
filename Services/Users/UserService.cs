@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROJETO_ADVOCACIA.Data;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Entities;
 using PROJETO_ADVOCACIA.ModelView.User;
 
 namespace PROJETO_ADVOCACIA.Services.Users;
@@ -16,7 +16,7 @@ public class UserService(ApplicationDbContext context) : IUserService
 
     #region Write Methods
 
-    public async Task<ResultDataObject<User>> LoginAsync(LoginModelView credentials)
+    public async Task<ResultDataObject<User>> LoginAsync(LoginDto credentials)
     {
         var autenticado = await _context.Users.AsNoTracking()
                                               .FirstOrDefaultAsync(u => u.Email == credentials.Email && u.Senha == credentials.Senha)
@@ -30,7 +30,7 @@ public class UserService(ApplicationDbContext context) : IUserService
         return new ResultDataObject<User>(true, $"Bem vindo {autenticado.Nome}", autenticado);
     }
 
-    public async Task<ResultDataObject<User>> NovoUsuarioAsync(NovoUserModelView user)
+    public async Task<ResultDataObject<User>> NovoUsuarioAsync(NovoUserDto user)
     {
 
         var existeUsuario = await _context.Users.AsNoTracking()

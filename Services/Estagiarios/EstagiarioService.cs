@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROJETO_ADVOCACIA.Data;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Dtos.Estagiario;
+using PROJETO_ADVOCACIA.Entities;
 
 namespace PROJETO_ADVOCACIA.Services.Estagiarios;
 
@@ -41,7 +42,7 @@ public class EstagiarioService(ApplicationDbContext context) : IEstagiarioServic
 
     #region Write Methods
 
-    public async Task<ResultDataObject<Estagiario>> AdicioanrEstagiarioAsync(Estagiario estagiario)
+    public async Task<ResultDataObject<Estagiario>> AdicioanrEstagiarioAsync(NovoEstagiarioDto estagiario)
     {
         var existeEstagiarioComCpf = await _context.Estagiarios
                                                   .AsNoTracking()
@@ -51,13 +52,20 @@ public class EstagiarioService(ApplicationDbContext context) : IEstagiarioServic
         if (existeEstagiarioComCpf != null)
             return new ResultDataObject<Estagiario>(false, "Estagiario com esse cpf já existe!", null);
 
-        var novoEstagiario = await _context.Estagiarios
-                                         .AddAsync(estagiario)
-                                         .ConfigureAwait(false);
+        var novoEstagiario = new Estagiario
+        {
+            Nome = estagiario.Nome,
+            CPF = estagiario.CPF,
+            Telefone = estagiario.Telefone,
+            CpfAdvogado = estagiario.CpfAdvogado
+        };
+
+        await _context.Estagiarios.AddAsync(novoEstagiario)
+                                  .ConfigureAwait(false);
 
         await _context.SaveChangesAsync();
 
-        return new ResultDataObject<Estagiario>(true, "Estagiario adicionado com sucesso!", estagiario);
+        return new ResultDataObject<Estagiario>(true, "Estagiario adicionado com sucesso!", novoEstagiario);
     }
 
     public async Task<ResultDataObject<Estagiario>> DeletarEstagiarioPeloCpfAsync(string cpf)

@@ -1,4 +1,4 @@
-﻿using PROJETO_ADVOCACIA.Models;
+﻿using PROJETO_ADVOCACIA.Entities;
 
 namespace PROJETO_ADVOCACIA.Controllers.Base;
 

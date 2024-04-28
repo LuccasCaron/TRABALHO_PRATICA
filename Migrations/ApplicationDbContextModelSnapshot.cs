@@ -22,7 +22,7 @@ namespace PROJETO_ADVOCACIA.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("PROJETO_ADVOCACIA.Models.Advogado", b =>
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Advogado", b =>
                 {
                     b.Property<string>("CPF")
                         .HasColumnType("varchar(15)")
@@ -48,7 +48,7 @@ namespace PROJETO_ADVOCACIA.Migrations
                     b.ToTable("Advogados");
                 });
 
-            modelBuilder.Entity("PROJETO_ADVOCACIA.Models.Cliente", b =>
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Cliente", b =>
                 {
                     b.Property<string>("CPF")
                         .HasColumnType("varchar(15)")
@@ -74,7 +74,68 @@ namespace PROJETO_ADVOCACIA.Migrations
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("PROJETO_ADVOCACIA.Models.Estagiario", b =>
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Custa", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Data_Custa")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime")
+                        .HasColumnName("Data_Custa")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Descricao");
+
+                    b.Property<Guid>("IdProcesso")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Valor")
+                        .HasColumnType("float")
+                        .HasColumnName("Valor");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdProcesso");
+
+                    b.ToTable("Custas");
+                });
+
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Emprestimo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CpfResponsavel")
+                        .IsRequired()
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("CpfResponsavel");
+
+                    b.Property<DateTime>("Data_Emprestimo")
+                        .HasColumnType("datetime")
+                        .HasColumnName("Data_Emprestimo");
+
+                    b.Property<string>("ISBN_Livro")
+                        .IsRequired()
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit")
+                        .HasColumnName("Status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ISBN_Livro");
+
+                    b.ToTable("Emprestimos");
+                });
+
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Estagiario", b =>
                 {
                     b.Property<string>("CPF")
                         .HasColumnType("varchar(15)")
@@ -101,14 +162,11 @@ namespace PROJETO_ADVOCACIA.Migrations
                     b.ToTable("Estagiarios");
                 });
 
-            modelBuilder.Entity("PROJETO_ADVOCACIA.Models.Livro", b =>
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Livro", b =>
                 {
-                    b.Property<int>("ISBN")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
+                    b.Property<string>("ISBN")
+                        .HasColumnType("varchar(30)")
                         .HasColumnName("ISBN");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ISBN"));
 
                     b.Property<string>("Autor")
                         .IsRequired()
@@ -125,7 +183,43 @@ namespace PROJETO_ADVOCACIA.Migrations
                     b.ToTable("Livros");
                 });
 
-            modelBuilder.Entity("PROJETO_ADVOCACIA.Models.User", b =>
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Processo", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CpfAdvogado")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)");
+
+                    b.Property<string>("CpfCliente")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)");
+
+                    b.Property<DateTime>("Data_Abertura")
+                        .HasColumnType("datetime")
+                        .HasColumnName("Data_Abertura");
+
+                    b.Property<string>("Descrição")
+                        .IsRequired()
+                        .HasColumnType("varchar(255)")
+                        .HasColumnName("Descrição");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit")
+                        .HasColumnName("Status");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CpfAdvogado");
+
+                    b.HasIndex("CpfCliente");
+
+                    b.ToTable("Processos");
+                });
+
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -153,15 +247,56 @@ namespace PROJETO_ADVOCACIA.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PROJETO_ADVOCACIA.Models.Estagiario", b =>
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Custa", b =>
                 {
-                    b.HasOne("PROJETO_ADVOCACIA.Models.Advogado", "Advogado")
+                    b.HasOne("PROJETO_ADVOCACIA.Entities.Processo", "Processo")
+                        .WithMany()
+                        .HasForeignKey("IdProcesso")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Processo");
+                });
+
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Emprestimo", b =>
+                {
+                    b.HasOne("PROJETO_ADVOCACIA.Entities.Livro", "Livro")
+                        .WithMany()
+                        .HasForeignKey("ISBN_Livro")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Livro");
+                });
+
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Estagiario", b =>
+                {
+                    b.HasOne("PROJETO_ADVOCACIA.Entities.Advogado", "Advogado")
                         .WithMany()
                         .HasForeignKey("CpfAdvogado")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Advogado");
+                });
+
+            modelBuilder.Entity("PROJETO_ADVOCACIA.Entities.Processo", b =>
+                {
+                    b.HasOne("PROJETO_ADVOCACIA.Entities.Advogado", "Advogado")
+                        .WithMany()
+                        .HasForeignKey("CpfAdvogado")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PROJETO_ADVOCACIA.Entities.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("CpfCliente")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Advogado");
+
+                    b.Navigation("Cliente");
                 });
 #pragma warning restore 612, 618
         }

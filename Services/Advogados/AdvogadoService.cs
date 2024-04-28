@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROJETO_ADVOCACIA.Data;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Entities;
 
 namespace PROJETO_ADVOCACIA.Services.Advogados;
 

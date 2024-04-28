@@ -1,5 +1,5 @@
 ﻿using PROJETO_ADVOCACIA.Controllers.Base;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Entities;
 using PROJETO_ADVOCACIA.Services.Livros;
 
 namespace PROJETO_ADVOCACIA.Controllers;
@@ -14,16 +14,16 @@ public static class LivroController
 
         app.MapGet("Livros", async (ILivroService livroService) =>
         {
-            var allLivros = await livroService.PegarTodosLivrosAsync();
+            var todosLivros = await livroService.PegarTodosLivrosAsync();
 
-            if (!allLivros.Success)
-                return ResultsBase.BadRequest(allLivros.Message);
+            if (!todosLivros.Success)
+                return ResultsBase.BadRequest(todosLivros.Message);
 
-            return ResultsBase.Success(allLivros.Message, allLivros.Data);
+            return ResultsBase.Success(todosLivros.Message, todosLivros.Data);
         })
         .WithTags("Livro");
 
-        app.MapGet("Livro/{isbn}", async (int isbn, ILivroService livroService) =>
+        app.MapGet("Livro/{isbn}", async (string isbn, ILivroService livroService) =>
         {
             var livro = await livroService.PegarLivroPeloISBNAsync(isbn);
 
@@ -50,7 +50,7 @@ public static class LivroController
         })
        .WithTags("Livro");
 
-        app.MapDelete("Livro{isbn}", async (int isbn, ILivroService livroService) =>
+        app.MapDelete("Livro{isbn}", async (string isbn, ILivroService livroService) =>
         {
             var deletarLivro = await livroService.DeletarLivroPeloISBNAsync(isbn);
 

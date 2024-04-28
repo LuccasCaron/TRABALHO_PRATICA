@@ -1,9 +1,7 @@
 ﻿namespace PROJETO_ADVOCACIA.ModelView.User;
 
-public class NovoUserModelView
+public class LoginDto
 {
-
-    public string Nome { get; set; }
 
     public string Email { get; set; }
 

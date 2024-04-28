@@ -8,7 +8,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddCustomDbContext();
 builder.Services.AddServices();
 
@@ -26,10 +25,7 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 // rotas
+app.AddRotas();
 
-app.RotasUser();
-app.RotasAdvogado();
-app.RotasCliente();
-app.RotasEstagiario();
 
 app.Run();

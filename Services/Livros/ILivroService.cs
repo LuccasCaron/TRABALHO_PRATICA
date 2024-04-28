@@ -1,12 +1,12 @@
-﻿using PROJETO_ADVOCACIA.Models;
+﻿using PROJETO_ADVOCACIA.Entities;
 
 namespace PROJETO_ADVOCACIA.Services.Livros
 {
     public interface ILivroService
     {
         Task<ResultDataObject<Livro>> AdicionarLivroAsync(Livro livro);
-        Task<ResultDataObject<Livro>> DeletarLivroPeloISBNAsync(int cpf);
-        Task<ResultDataObject<Livro>> PegarLivroPeloISBNAsync(int isbn);
+        Task<ResultDataObject<Livro>> DeletarLivroPeloISBNAsync(string isbn);
+        Task<ResultDataObject<Livro>> PegarLivroPeloISBNAsync(string isbn);
         Task<ResultDataObject<List<Livro>>> PegarTodosLivrosAsync();
     }
 }

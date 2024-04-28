@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Entities;
 
 namespace PROJETO_ADVOCACIA.Repositories.Configuration;
 

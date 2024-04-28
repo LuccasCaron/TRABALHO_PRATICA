@@ -1,5 +1,6 @@
 ﻿using PROJETO_ADVOCACIA.Controllers.Base;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Dtos.Estagiario;
+using PROJETO_ADVOCACIA.Entities;
 using PROJETO_ADVOCACIA.Services.Estagiarios;
 
 namespace PROJETO_ADVOCACIA.Controllers;
@@ -37,9 +38,9 @@ public static class EstagiarioController
 
         #region Write Operations
 
-        app.MapPost("Estagiario", async (Estagiario novoCliente, IEstagiarioService estagiarioService) =>
+        app.MapPost("Estagiario", async (NovoEstagiarioDto novoEstagiario, IEstagiarioService estagiarioService) =>
         {
-            var addEstagiario = await estagiarioService.AdicioanrEstagiarioAsync(novoCliente);
+            var addEstagiario = await estagiarioService.AdicioanrEstagiarioAsync(novoEstagiario);
 
             if (!addEstagiario.Success)
                 return ResultsBase.BadRequest(addEstagiario.Message);

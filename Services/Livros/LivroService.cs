@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PROJETO_ADVOCACIA.Data;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Entities;
 
 namespace PROJETO_ADVOCACIA.Services.Livros;
 
@@ -27,7 +27,7 @@ public class LivroService(ApplicationDbContext context) : ILivroService
         return new ResultDataObject<List<Livro>>(true, "", todosOsLivros);
     }
 
-    public async Task<ResultDataObject<Livro>> PegarLivroPeloISBNAsync(int isbn)
+    public async Task<ResultDataObject<Livro>> PegarLivroPeloISBNAsync(string isbn)
     {
         var livro = await _context.Livros.AsNoTracking()
                                          .FirstOrDefaultAsync(l => l.ISBN == isbn);
@@ -61,9 +61,9 @@ public class LivroService(ApplicationDbContext context) : ILivroService
         return new ResultDataObject<Livro>(true, "Livro adicionado com sucesso!", livro);
     }
 
-    public async Task<ResultDataObject<Livro>> DeletarLivroPeloISBNAsync(int cpf)
+    public async Task<ResultDataObject<Livro>> DeletarLivroPeloISBNAsync(string isbn)
     {
-        var existeLivro = await PegarLivroPeloISBNAsync(cpf);
+        var existeLivro = await PegarLivroPeloISBNAsync(isbn);
 
         if (!existeLivro.Success)
             return new ResultDataObject<Livro>(existeLivro.Success, existeLivro.Message, null);

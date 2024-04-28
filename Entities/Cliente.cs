@@ -1,4 +1,4 @@
-﻿namespace PROJETO_ADVOCACIA.Models;
+﻿namespace PROJETO_ADVOCACIA.Entities;
 
 public class Cliente
 {

@@ -12,7 +12,7 @@ public static class UserController
 
         #region Write Operations
 
-        app.MapPost("User/Login", async (LoginModelView credentials, IUserService userService) =>
+        app.MapPost("User/Login", async (LoginDto credentials, IUserService userService) =>
         {
             var autenticado = await userService.LoginAsync(credentials);
 
@@ -23,7 +23,7 @@ public static class UserController
         })
         .WithTags("User");
 
-        app.MapPost("User", async (NovoUserModelView novoUser, IUserService userService) =>
+        app.MapPost("User", async (NovoUserDto novoUser, IUserService userService) =>
         {
             var adicionarUsuario = await userService.NovoUsuarioAsync(novoUser);
 

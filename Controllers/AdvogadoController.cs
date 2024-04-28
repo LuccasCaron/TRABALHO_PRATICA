@@ -1,5 +1,5 @@
 ﻿using PROJETO_ADVOCACIA.Controllers.Base;
-using PROJETO_ADVOCACIA.Models;
+using PROJETO_ADVOCACIA.Entities;
 using PROJETO_ADVOCACIA.Services.Advogados;
 
 namespace PROJETO_ADVOCACIA.Controllers;
