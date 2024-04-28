@@ -1,4 +1,3 @@
-using PROJETO_ADVOCACIA.Controllers;
 using PROJETO_ADVOCACIA.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +18,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 app.MapControllers();
 
