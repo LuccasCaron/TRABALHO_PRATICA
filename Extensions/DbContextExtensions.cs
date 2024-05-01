@@ -11,16 +11,26 @@ public static class DbContextExtensions
     
     #endregion
 
-    public static void AddCustomDbContext(this IServiceCollection services)
+    public static void AddCustomDbContext(this IServiceCollection services, string connection)
     {
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseSqlServer(_connection,
+            options.UseSqlServer(connection,
                 sqlServerOptionsAction: sqlOptions =>
                 {
                     sqlOptions.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
                 });
         });
     }
+
+    public static void MigrationInit(this IApplicationBuilder appBuilder)
+    {
+        using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
+        {
+            var dbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+            dbContext.Database.Migrate();
+        }
+    }
+
 
 }

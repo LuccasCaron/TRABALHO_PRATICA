@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PROJETO_ADVOCACIA")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+25581cca8441693b865e0ccbf92266ec402032a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e5683dda5959475013f422dcb3ba0c1757a680a")]
 [assembly: System.Reflection.AssemblyProductAttribute("PROJETO_ADVOCACIA")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PROJETO_ADVOCACIA")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

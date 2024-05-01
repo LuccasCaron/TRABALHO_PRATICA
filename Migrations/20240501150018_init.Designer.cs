@@ -12,7 +12,7 @@ using PROJETO_ADVOCACIA.Data;
 namespace PROJETO_ADVOCACIA.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240428180600_init")]
+    [Migration("20240501150018_init")]
     partial class init
     {
         /// <inheritdoc />

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pvyPGLG0ZKnpbD/aOYOVSPoHv7pPnS8qLGLh+6dMND+Cb/+IExG0YZoxmV9TSfFGhyCmunB1Cc8mJp8Z2hTlPg==",
+  "dgSpecHash": "WSenT3ir1IaHT2qJmdw1nGBXL97pYmkCpkJsYMC/2uBUQw5T3XuJALVqmPyJLj3p5K8/iQrm2WqkSWi9g+WpCQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucca\\OneDrive\\Desktop\\PROJETO_ADVOCACIA\\PROJETO_ADVOCACIA\\PROJETO_ADVOCACIA.csproj",
+  "projectFilePath": "C:\\Users\\lucca\\OneDrive\\Desktop\\Pessoal\\PROJETO_ADVOCACIA\\PROJETO_ADVOCACIA\\PROJETO_ADVOCACIA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucca\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\lucca\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

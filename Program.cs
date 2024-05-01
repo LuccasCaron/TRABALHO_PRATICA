@@ -7,10 +7,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCustomDbContext();
+var connection = builder.Configuration.GetConnectionString("Connection");
+builder.Services.AddCustomDbContext(connection);
 builder.Services.AddServices();
 
 var app = builder.Build();
+
+DbContextExtensions.MigrationInit(app);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
