@@ -5,16 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowSpecificOrigin", builder =>
-    {
-        builder.WithOrigins("http://localhost:5173")
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-    });
-});
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -23,6 +13,8 @@ builder.Services.AddCustomDbContext(connection);
 builder.Services.AddServices();
 
 var app = builder.Build();
+
+app.UseCors("AllowSpecificOrigin");
 
 DbContextExtensions.MigrationInit(app);
 

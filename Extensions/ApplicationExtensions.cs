@@ -23,14 +23,13 @@ public static class ApplicationExtensions
         services.AddScoped<IEmprestimoService, EmprestimoService>();
 
         services.AddCors(options =>
-         {
-             options.AddPolicy("AllowSpecificOrigin", builder =>
-             {
-                 builder.WithOrigins("http://localhost:5173")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
-             });
-         });
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder => builder.WithOrigins("http://localhost:5173")
+                                  .AllowAnyHeader()
+                                  .WithMethods("GET", "PUT", "POST", "DELETE"));
+        });
+
     }
 
 }
