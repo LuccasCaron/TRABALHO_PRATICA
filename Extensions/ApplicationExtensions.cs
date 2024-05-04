@@ -18,9 +18,19 @@ public static class ApplicationExtensions
         services.AddScoped<IClienteService, ClienteService>();
         services.AddScoped<IEstagiarioService, EstagiarioService>();
         services.AddScoped<ILivroService, LivroService>();
-        services.AddScoped<IProcessoService, ProcessoService>();    
+        services.AddScoped<IProcessoService, ProcessoService>();
         services.AddScoped<ICustaService, CustaService>();
         services.AddScoped<IEmprestimoService, EmprestimoService>();
+
+        services.AddCors(options =>
+         {
+             options.AddPolicy("AllowSpecificOrigin", builder =>
+             {
+                 builder.WithOrigins("http://localhost:5173")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+             });
+         });
     }
 
 }

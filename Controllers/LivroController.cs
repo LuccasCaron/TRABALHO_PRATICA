@@ -17,7 +17,7 @@ public static class LivroController
             var todosLivros = await livroService.PegarTodosLivrosAsync();
 
             if (!todosLivros.Success)
-                return ResultsBase.BadRequest(todosLivros.Message);
+                return ResultsBase.NotFound(todosLivros.Message);
 
             return ResultsBase.Success(todosLivros.Message, todosLivros.Data);
         })
@@ -28,7 +28,7 @@ public static class LivroController
             var livro = await livroService.PegarLivroPeloISBNAsync(isbn);
 
             if (!livro.Success)
-                return ResultsBase.BadRequest(livro.Message);
+                return ResultsBase.NotFound(livro.Message);
 
             return ResultsBase.Success(livro.Message, livro.Data);
         })
