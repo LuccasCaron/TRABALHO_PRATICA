@@ -1,3 +1,4 @@
+using PROJETO_ADVOCACIA.Controllers.Base;
 using PROJETO_ADVOCACIA.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,11 +19,9 @@ DbContextExtensions.MigrationInit(app);
 app.UseSwagger();
 app.UseSwaggerUI();
 
-
 app.MapControllers();
 
 // rotas
 app.AddRotas();
-
 
 app.Run();
