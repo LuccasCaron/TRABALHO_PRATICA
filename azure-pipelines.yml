@@ -10,10 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+#em vez de colocar os steps build aqui restore etc
+# eu chamo meu arquivo docker q vai fazer tudo
+- task: Docker@2
+  inputs:
+    containerRegistry: 'DockerHub'
+    repository: 'luccascaron'
+    command: 'buildAndPush'
+    Dockerfile: './Dockerfile'
+    buildContext: '.'
