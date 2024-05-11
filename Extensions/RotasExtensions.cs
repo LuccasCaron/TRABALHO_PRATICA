@@ -1,4 +1,4 @@
-﻿using PROJETO_ADVOCACIA.Controllers;
+﻿using PROJETO_ADVOCACIA.Routes;
 
 namespace PROJETO_ADVOCACIA.Extensions
 {

@@ -23,14 +23,13 @@ public static class DbContextExtensions
         });
     }
 
-    public static void MigrationInit(this IApplicationBuilder appBuilder)
-    {
-        using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
-        {
-            var dbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-            dbContext.Database.Migrate();
-        }
-    }
-
+    //public static void MigrationInit(this IApplicationBuilder appBuilder)
+    //{
+    //    using (var serviceScope = appBuilder.ApplicationServices.CreateScope())
+    //    {
+    //        var dbContext = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
+    //        dbContext.Database.Migrate();
+    //    }
+    //}
 
 }

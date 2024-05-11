@@ -25,7 +25,7 @@ public static class ApplicationExtensions
         services.AddCors(options =>
         {
             options.AddPolicy("AllowSpecificOrigin",
-                builder => builder.WithOrigins("http://localhost:5173")
+                builder => builder.AllowAnyOrigin()
                                   .AllowAnyHeader()
                                   .WithMethods("GET", "PUT", "POST", "DELETE"));
         });

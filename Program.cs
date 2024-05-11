@@ -1,4 +1,3 @@
-using PROJETO_ADVOCACIA.Controllers.Base;
 using PROJETO_ADVOCACIA.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,8 +14,10 @@ builder.Services.AddServices();
 var app = builder.Build();
 
 app.UseCors("AllowSpecificOrigin");
+app.UseDeveloperExceptionPage();
 
-DbContextExtensions.MigrationInit(app);
+
+//DbContextExtensions.MigrationInit(app);
 
 app.UseSwagger();
 app.UseSwaggerUI();
@@ -26,4 +27,7 @@ app.MapControllers();
 // rotas
 app.AddRotas();
 
+
 app.Run();
+
+public partial class Program { }
