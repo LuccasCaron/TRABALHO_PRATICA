@@ -17,7 +17,7 @@ public static class ProcessoRoutes
             var todosProcessos = await processoService.PegarTodosProcessossAsync();
 
             if (!todosProcessos.Success)
-                return ResultsBase.BadRequest(todosProcessos.Message);
+                return ResultsBase.NotFound(todosProcessos.Message);
 
             return ResultsBase.Success(todosProcessos.Message, todosProcessos.Data);
         })
@@ -28,7 +28,7 @@ public static class ProcessoRoutes
             var processo = await processoService.PegarProcessoPeloIdAsync(id);
 
             if (!processo.Success)
-                return ResultsBase.BadRequest(processo.Message);
+                return ResultsBase.NotFound(processo.Message);
 
             return ResultsBase.Success(processo.Message, processo.Data);
         })
@@ -43,7 +43,7 @@ public static class ProcessoRoutes
             var addProcesso = await processoService.AdicionarProcessoAsync(novoProcesso);
 
             if (!addProcesso.Success)
-                return ResultsBase.BadRequest(addProcesso.Message);
+                return ResultsBase.NotFound(addProcesso.Message);
 
             return ResultsBase.Success(addProcesso.Message, addProcesso.Data);
 
@@ -55,7 +55,7 @@ public static class ProcessoRoutes
             var processoAtualizado = await processoService.AlterarStatusDoProcessoPeloIdAsync(id, novoStatus);
 
             if (!processoAtualizado.Success)
-                return ResultsBase.BadRequest(processoAtualizado.Message);
+                return ResultsBase.NotFound(processoAtualizado.Message);
 
             return ResultsBase.Success(processoAtualizado.Message, processoAtualizado.Data);
 

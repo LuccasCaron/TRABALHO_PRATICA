@@ -17,7 +17,7 @@ public static class ClienteRoutes
             var todosOsClientes = await clienteService.PegarTodosOsClientesAsync();
 
             if (!todosOsClientes.Success)
-                return ResultsBase.BadRequest(todosOsClientes.Message);
+                return ResultsBase.NotFound(todosOsClientes.Message);
 
             return ResultsBase.Success(todosOsClientes.Message, todosOsClientes.Data);
         })
@@ -28,7 +28,7 @@ public static class ClienteRoutes
             var cliente = await clienteService.PegarClientePeloCpf(cpf);
 
             if (!cliente.Success)
-                return ResultsBase.BadRequest(cliente.Message);
+                return ResultsBase.NotFound(cliente.Message);
 
             return ResultsBase.Success(cliente.Message, cliente.Data);
         })
@@ -43,7 +43,7 @@ public static class ClienteRoutes
             var addCliente = await clienteService.AdicioanrClienteAsync(novoCliente);
 
             if (!addCliente.Success)
-                return ResultsBase.BadRequest(addCliente.Message);
+                return ResultsBase.NotFound(addCliente.Message);
 
             return ResultsBase.Success(addCliente.Message, addCliente.Data);
 

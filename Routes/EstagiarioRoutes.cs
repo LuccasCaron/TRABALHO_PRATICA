@@ -16,7 +16,7 @@ public static class EstagiarioRoutes
             var todosOsEstagiarios = await estagiarioService.PegarTodosOsEstagiariosAsync();
 
             if (!todosOsEstagiarios.Success)
-                return ResultsBase.BadRequest(todosOsEstagiarios.Message);
+                return ResultsBase.NotFound(todosOsEstagiarios.Message);
 
             return ResultsBase.Success(todosOsEstagiarios.Message, todosOsEstagiarios.Data);
         })
@@ -27,7 +27,7 @@ public static class EstagiarioRoutes
             var estagiario = await estagiarioService.PegarEstagiarioPeloCpf(cpf);
 
             if (!estagiario.Success)
-                return ResultsBase.BadRequest(estagiario.Message);
+                return ResultsBase.NotFound(estagiario.Message);
 
             return ResultsBase.Success(estagiario.Message, estagiario.Data);
         })
@@ -42,7 +42,7 @@ public static class EstagiarioRoutes
             var addEstagiario = await estagiarioService.AdicioanrEstagiarioAsync(novoEstagiario);
 
             if (!addEstagiario.Success)
-                return ResultsBase.BadRequest(addEstagiario.Message);
+                return ResultsBase.NotFound(addEstagiario.Message);
 
             return ResultsBase.Success(addEstagiario.Message, addEstagiario.Data);
 

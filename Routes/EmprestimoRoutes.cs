@@ -17,7 +17,7 @@ public static class EmprestimoRoutes
             var todosProcessos = await emprestimoService.PegarTodosEmprestimosAsync();
 
             if (!todosProcessos.Success)
-                return ResultsBase.BadRequest(todosProcessos.Message);
+                return ResultsBase.NotFound(todosProcessos.Message);
 
             return ResultsBase.Success(todosProcessos.Message, todosProcessos.Data);
         })
@@ -28,7 +28,7 @@ public static class EmprestimoRoutes
             var emprestimo = await emprestimoService.PegarEmprestimoPeloIdAsync(id);
 
             if (!emprestimo.Success)
-                return ResultsBase.BadRequest(emprestimo.Message);
+                return ResultsBase.NotFound(emprestimo.Message);
 
             return ResultsBase.Success(emprestimo.Message, emprestimo.Data);
         })
@@ -43,7 +43,7 @@ public static class EmprestimoRoutes
             var addEmprestimo = await emprestimoService.AdicionarEmprestimoAsync(novoEmprestimo);
 
             if (!addEmprestimo.Success)
-                return ResultsBase.BadRequest(addEmprestimo.Message);
+                return ResultsBase.NotFound(addEmprestimo.Message);
 
             return ResultsBase.Success(addEmprestimo.Message, addEmprestimo.Data);
 
@@ -55,7 +55,7 @@ public static class EmprestimoRoutes
             var emprestimoAtualizado = await emprestimoService.AlterarStatusDoEmprestimoPeloIdAsync(id, novoStatus);
 
             if (!emprestimoAtualizado.Success)
-                return ResultsBase.BadRequest(emprestimoAtualizado.Message);
+                return ResultsBase.NotFound(emprestimoAtualizado.Message);
 
             return ResultsBase.Success(emprestimoAtualizado.Message, emprestimoAtualizado.Data);
 

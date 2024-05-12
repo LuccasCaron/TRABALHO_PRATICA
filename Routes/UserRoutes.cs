@@ -17,7 +17,7 @@ public static class UserRoutes
             var autenticado = await userService.LoginAsync(credentials);
 
             if (!autenticado.Success)
-                return ResultsBase.BadRequest(autenticado.Message);
+                return ResultsBase.NotFound(autenticado.Message);
 
             return ResultsBase.Success(autenticado.Message, autenticado.Data);
         })
@@ -28,7 +28,7 @@ public static class UserRoutes
             var adicionarUsuario = await userService.NovoUsuarioAsync(novoUser);
 
             if (!adicionarUsuario.Success)
-                return ResultsBase.BadRequest(adicionarUsuario.Message);
+                return ResultsBase.NotFound(adicionarUsuario.Message);
 
             return ResultsBase.Success(adicionarUsuario.Message, adicionarUsuario.Data);
         })

@@ -17,7 +17,7 @@ public static class AdvogadoRoutes
             var allAdvogados = await advogadoService.PegarTodosAdvogadosAsync();
 
             if(!allAdvogados.Success)
-                return ResultsBase.BadRequest(allAdvogados.Message);
+                return ResultsBase.NotFound(allAdvogados.Message);
 
             return ResultsBase.Success(allAdvogados.Message, allAdvogados.Data);
         })
@@ -28,7 +28,7 @@ public static class AdvogadoRoutes
             var advogado = await advogadoService.PegarAdvogadoPeloCpfAsync(cpf);
 
             if (!advogado.Success)
-                return ResultsBase.BadRequest(advogado.Message);
+                return ResultsBase.NotFound(advogado.Message);
 
             return ResultsBase.Success(advogado.Message, advogado.Data);
         })
@@ -43,7 +43,7 @@ public static class AdvogadoRoutes
             var addAdvogado = await advogadoService.AdicionarAdvogadoAsync(novoAdvogado);
 
             if (!addAdvogado.Success)
-                return ResultsBase.BadRequest(addAdvogado.Message);
+                return ResultsBase.NotFound(addAdvogado.Message);
 
             return ResultsBase.Success(addAdvogado.Message, addAdvogado.Data);
 

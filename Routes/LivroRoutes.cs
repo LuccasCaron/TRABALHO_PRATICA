@@ -43,7 +43,7 @@ public static class LivroRoutes
             var addLivro = await livroService.AdicionarLivroAsync(novoLivro);
 
             if (!addLivro.Success)
-                return ResultsBase.BadRequest(addLivro.Message);
+                return ResultsBase.NotFound(addLivro.Message);
 
             return ResultsBase.Success(addLivro.Message, addLivro.Data);
 

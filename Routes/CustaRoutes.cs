@@ -17,7 +17,7 @@ public static class CustaRoutes
             var todasAsCustasDoProcesso = await custaService.PegarTodasAsCustasPeloIdDoProcessoAsync(idProcesso);
 
             if (!todasAsCustasDoProcesso.Success)
-                return ResultsBase.BadRequest(todasAsCustasDoProcesso.Message);
+                return ResultsBase.NotFound(todasAsCustasDoProcesso.Message);
 
             return ResultsBase.Success(todasAsCustasDoProcesso.Message, todasAsCustasDoProcesso.Data);
         })
@@ -28,7 +28,7 @@ public static class CustaRoutes
             var custa = await custaService.PegarCustaPeloIdAsync(id);
 
             if (!custa.Success)
-                return ResultsBase.BadRequest(custa.Message);
+                return ResultsBase.NotFound(custa.Message);
 
             return ResultsBase.Success(custa.Message, custa.Data);
         })
@@ -43,7 +43,7 @@ public static class CustaRoutes
             var addCusta = await custaService.AdicionarCustaAsync(novaCusta);
 
             if (!addCusta.Success)
-                return ResultsBase.BadRequest(addCusta.Message);
+                return ResultsBase.NotFound(addCusta.Message);
 
             return ResultsBase.Success(addCusta.Message, addCusta.Data);
 
