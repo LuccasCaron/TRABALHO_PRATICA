@@ -23,7 +23,7 @@ public class UserService(ApplicationDbContext context) : IUserService
                                               .ConfigureAwait(false);
 
         if (autenticado == null)
-            return new ResultDataObject<User>(true, "Usuario ou senha inválidos", null);
+            return new ResultDataObject<User>(false, "Usuario ou senha inválidos", null);
 
 
 

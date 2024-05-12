@@ -7,7 +7,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connection = builder.Configuration.GetConnectionString("Connection");
+var connection = Environment.GetEnvironmentVariable("Connection");
 builder.Services.AddCustomDbContext(connection);
 builder.Services.AddServices();
 
