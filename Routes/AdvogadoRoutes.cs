@@ -40,6 +40,9 @@ public static class AdvogadoRoutes
 
         app.MapPost("Advogado", async (Advogado novoAdvogado, IAdvogadoService advogadoService) =>
         {
+            if (novoAdvogado.CPF == null)
+                return ResultsBase.BadRequest("Cpf é obrigatório");
+
             var addAdvogado = await advogadoService.AdicionarAdvogadoAsync(novoAdvogado);
 
             if (!addAdvogado.Success)
