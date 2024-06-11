@@ -409,3 +409,8 @@ C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\
 C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\Debug\net8.0\PROJETO_ADVOCACIA.pdb
 C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\Debug\net8.0\PROJETO_ADVOCACIA.genruntimeconfig.cache
 C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\obj\Debug\net8.0\ref\PROJETO_ADVOCACIA.dll
+C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\bin\Debug\net8.0\publish\web.config
+C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\bin\Debug\net8.0\publish\appsettings.Development.json
+C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\bin\Debug\net8.0\publish\appsettings.json
+C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\bin\Debug\net8.0\publish\PROJETO_ADVOCACIA.deps.json
+C:\Users\lucca\OneDrive\Desktop\Pessoal\PROJETO_ADVOCACIA\PROJETO_ADVOCACIA\bin\Debug\net8.0\publish\PROJETO_ADVOCACIA.runtimeconfig.json

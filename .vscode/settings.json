@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/c7c744f4-ed23-4bbd-b9c0-f1c6a6628a5a/resourceGroups/db_projeto_adv/providers/Microsoft.Web/sites/api-projeto-adv",
+  "appService.deploySubpath": "publish"
+}
